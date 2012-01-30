@@ -1,0 +1,82 @@
+mmv
+------------------------------------------
+
+Move, copy, append and link multiple files with wild cards
+
+Program to move/copy/append/link multiple files according to a set of
+wildcard patterns. This multiple action is performed safely, i.e.
+without any unexpected deletion of files due to collisions of target
+names with existing filenames or with other target names.
+
+Runtime requirements:
+  cygwin
+
+Build requirements:
+  cygwin
+
+Canonical homepage:
+  http://packages.debian.org/mmv
+
+Canonical download:
+  See above
+
+Version control repository:
+
+Mailing list:
+
+Forum / Wiki:
+
+IRC channel:
+
+Upstream contact:
+  Author: 1989 Vladimir Lanin <lanin@csd2.nyu.edu>
+  Bugs:
+
+License:
+  GPL
+
+Language:
+  C
+
+------------------------------------
+
+Build instructions:
+  unpack mmv-1.01b-1-src.tar.bz2
+    if you use setup to install this src package, it will be
+    unpacked under /usr/src automatically
+  cd /usr/src
+  ./mmv*.sh all
+
+This will create:
+  mmv-1.01b-1.tar.bz2
+  mmv-1.01b-1-src.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary distro:
+
+usr/bin/mad -> mmv
+usr/bin/mcp -> mmv
+usr/bin/mln -> mmv
+usr/bin/mmv.exe
+usr/share/doc/Cygwin/mmv-1.01.2.README
+usr/share/doc/mmv-1.01.2/ANNOUNCE
+usr/share/doc/mmv-1.01.2/ARTICLE
+usr/share/doc/mmv-1.01.2/ChangeLog
+usr/share/doc/mmv-1.01.2/READ.ME
+usr/share/man/man1/mad.1.gz -> mmv.1.gz
+usr/share/man/man1/mcp.1.gz -> mmv.1.gz
+usr/share/man/man1/mln.1.gz -> mmv.1.gz
+usr/share/man/man1/mmv.1.gz
+
+------------------
+
+Port Notes:
+- Debian *.diff applied
+- Makefile: rewrote target 'all'
+
+----- version 1.01b-1 -----
+- Initial release 2007-09-30 Jari Aalto
+
+Cygwin port maintained by: Jari Aalto <jari.aalto@cante.net>
+Copyright (C) 2007 Jari Aalto; Licenced under GPL v2 or later

@@ -1,0 +1,67 @@
+diff --git a/Makefile b/Makefile
+index 84d6a73..caff8d0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,10 @@
+ # Possible defines in CONF:
+ #	IS_MSDOS IS_SYSV IS_V7 IS_BSD HAS_DIRENT HAS_RENAME MV_DIR
+ 
+-CC		=gcc -traditional
++CC		=gcc
+ LD		=$(CC)
+ CONF		=-DIS_SYSV -DHAS_DIRENT -DHAS_RENAME
+-CFLAGS		=-O2 -m486 $(CONF)
++CFLAGS		=-O2 $(CONF)
+ LDFLAGS		=-s -N
+ 
+ #IBIN		=$(LOCAL)$(ARCH)/bin
+@@ -12,13 +12,44 @@ LDFLAGS		=-s -N
+ IBIN=$(DESTDIR)/usr/bin/
+ IMAN=$(DESTDIR)/usr/man/
+ 
+-mmv:		mmv.o
++DESTDIR		=
++prefix		= /usr
++exec_prefix	= $(prefix)
++man_prefix	= $(prefix)/share
++
++INSTALL		= /usr/bin/install
++INSTALL_BIN	= $(INSTALL) -m 755
++INSTALL_DATA	= $(INSTALL) -m 644
++INSTALL_OBJS	= mmv
++
++MANDIR		= $(DESTDIR)$(man_prefix)/man/man1
++BINDIR		= $(DESTDIR)$(exec_prefix)/bin
++
++all: mmv
++
++mmv: mmv.c
++	$(CC) $(CFLAGS) $? -o $@
+ 
+ clean:
+ 	rm -f mmv mmv.o
+ 
+-install:	$(DEST)$(IBIN)/mmv
+-install:	$(DEST)$(IMAN)/man1/mmv.1
++install-old:	$(DEST)$(IBIN)/mmv
++install-old:	$(DEST)$(IMAN)/man1/mmv.1
++
++install-bin:
++	$(INSTALL_BIN) -d $(BINDIR)
++	$(INSTALL_BIN) -s $(INSTALL_OBJS) $(BINDIR)
++	-cd $(BINDIR) && \
++	for i in mcp mln mad; do ln -s mmv $$i; done
++
++install-man:
++	$(INSTALL_BIN) -d $(MANDIR)
++	$(INSTALL_DATA) *.1 $(MANDIR)
++	-cd $(MANDIR) && \
++	gzip *.1; \
++	for i in mcp mln mad; do ln -s mmv.1.gz $$i.1.gz ; done
++
++install: all install-bin install-man
+ 
+-$(DEST)$(IBIN)/mmv:		mmv;	cp $? $@
+-$(DEST)$(IMAN)/man1/mmv.1:	mmv.1;	cp $? $@
++#$(DEST)$(IBIN)/mmv:		mmv;	cp $? $@
++#$(DEST)$(IMAN)/man1/mmv.1:	mmv.1;	cp $? $@

@@ -1,0 +1,3 @@
+# Copyright (C) 2007 Jari Aalto; Licenced under GPL v2 or later
+tag1: mmv
+  http://packages.debian.org/unstable/mmv pregexp:tar.gz file:orig.tar.gz new: x:

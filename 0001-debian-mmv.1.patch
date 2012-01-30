@@ -1,0 +1,46 @@
+ mmv.1 |   11 +++++++----
+ 1 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/mmv.1 b/mmv.1
+index e23c5ae..f6c6029 100644
+--- a/mmv.1
++++ b/mmv.1
+@@ -2,7 +2,7 @@
+ .\" To print the MS-DOS version, use option -rO2.
+ .\" Under System V, take out the '.\"  ' from the next line.
+ .\" .nr O 1
+-.TH MMV 1 "November 20, 1989 (v1.0)"
++.TH MMV 1 "November 20, 2001 (v1.0lfs)"
+ .ie !'\nO'2' \{\
+ .SH NAME
+ mmv \- move/copy/append/link multiple files by wildcard patterns
+@@ -28,6 +28,7 @@ mmv \- move/copy/append multiple files by wildcard patterns
+ [\fB-d\fP|\fBp\fP]
+ [\fB-g\fP|\fBt\fP]
+ [\fB-v\fP|\fBn\fP]
++[\fB--\fP]
+ [\fBfrom to\fP]
+ .if '\nO'2' \{\
+ .br
+@@ -56,7 +57,8 @@ from the entire set of actions specified
+ and gives the user the choice of either
+ proceeding by avoiding the offending parts
+ or aborting.
+-
++.I mmv does support large files (LFS) but it does *NOT* support
++sparse files (i.e. it explodes them).
+ .ce
+ The Task Options
+ .PP
+@@ -332,8 +334,9 @@ before passing the command-line arguments to
+ .IR mmv ,
+ it is usually necessary to enclose the command-line
+ .I from
+-pattern
+-in quotes.
++and
++.I to
++patterns in quotes.
+ \}
+ 
+ .ce

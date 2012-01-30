@@ -1,0 +1,8 @@
+sdesc: "Move, copy, append and link multiple files with wild cards"
+ldesc: "Program to move/copy/append/link multiple files
+according to a set of wildcard patterns. This multiple action is
+performed safely, i.e. without any unexpected deletion of files due to
+collisions of target names with existing filenames or with other
+target names."
+category: Utils
+requires: cygwin
